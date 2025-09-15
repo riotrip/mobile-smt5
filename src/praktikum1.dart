@@ -14,4 +14,9 @@ void main() {
   // if (testing) {
   //   print("Kebenaran");
   // }
+  
+  String testing = "true";
+  if (testing == "true") {
+    print("Kebenaran");
+  }
 }
