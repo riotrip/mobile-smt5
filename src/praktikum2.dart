@@ -18,6 +18,9 @@ void main() {
     '2341720236',
   ]);
 
+  names3['nama'] = 'Rio Tri Prayogo';
+  names3['nim'] = '2341720236';
+
   print(names1);
   print(names2);
   print(names3);
