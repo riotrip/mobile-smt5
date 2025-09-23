@@ -1,13 +1,21 @@
-# Pemrograman Mobile - Semester 5
+# Pemrograman Mobile
 
-**Nama**        : Rio Tri Prayogo
+**Nama** : Rio Tri Prayogo
 
-**NIM**         : 2341720236
+**NIM** : 2341720236
 
-**No. Absen**   : 25
+## 03 | Pengantar Bahasa Pemrograman Dart - Bagian 3
 
-**Kelas**       : TI 3F
+### Praktikum
 
-**D-IV Teknik Informatika**
+**Praktikum 1: Eksperimen Tipe Data List**<br>
 
-**Politeknik Negeri Malang**
+**Praktikum 2: Eksperimen Tipe Data Set**<br>
+
+**Praktikum 3: Eksperimen Tipe Data Maps**<br>
+
+**Praktikum 4: Eksperimen Tipe Data List: Spread dan Control-flow Operators**<br>
+
+**Praktikum 5: Eksperimen Tipe Data Records**<br>
+
+**Tugas Praktikum**<br>
