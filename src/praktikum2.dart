@@ -9,4 +9,16 @@ void main() {
   print(names1);
   print(names2);
   print(names3);
+
+  names1.add('Rio Tri Prayogo'); 
+  names1.add('2341720236');
+
+  names2.addAll([
+    'Rio Tri Prayogo',
+    '2341720236',
+  ]);
+
+  print(names1);
+  print(names2);
+  print(names3);
 }
