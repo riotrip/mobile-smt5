@@ -20,6 +20,8 @@ void main() {
   var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
   print(nav);
 
+  // var login = 'Manager';
+  var login = 'User';
   var nav2 = [
     'Home',
     'Furniture',
