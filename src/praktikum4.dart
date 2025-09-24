@@ -15,6 +15,8 @@ void main() {
   var list4 = [...bio];
   print(list4);
 
+  // var promoActive = true;
+  var promoActive = false;
   var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
   print(nav);
 }
