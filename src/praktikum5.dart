@@ -13,7 +13,7 @@ void main() {
   (String, int) mahasiswa = ('Rio Tri Prayogo', 2341720236);
   print(mahasiswa);
 
-  var mahasiswa2 = ('first', a: 2, b: true, 'last');
+  var mahasiswa2 = ('Rio Tri Prayogo', a: 2341720236, b: true, 'last');
 
   print(mahasiswa2.$1); // Prints 'first'
   print(mahasiswa2.a); // Prints 2
