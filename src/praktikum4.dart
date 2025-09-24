@@ -15,8 +15,16 @@ void main() {
   var list4 = [...bio];
   print(list4);
 
-  // var promoActive = true;
-  var promoActive = false;
+  var promoActive = true;
+  // var promoActive = false;
   var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
   print(nav);
+
+  var nav2 = [
+    'Home',
+    'Furniture',
+    'Plants',
+    if (login case 'Manager') 'Inventory',
+  ];
+  print(nav2);
 }
