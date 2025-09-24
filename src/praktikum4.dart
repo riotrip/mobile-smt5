@@ -9,4 +9,9 @@ void main() {
   print(list1);
   var list3 = [0, ...list1];
   print(list3.length);
+
+  var bio = ['Rio Tri Prayogo', 2341720236];
+  print(bio);
+  var list4 = [...bio];
+  print(list4);
 }
