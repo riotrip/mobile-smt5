@@ -237,5 +237,78 @@ Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Jelaskan manfaat Collec
 **_[Praktikum 4 Code](src/praktikum4.dart)_**
 
 **Praktikum 5: Eksperimen Tipe Data Records**<br>
+Langkah 1:
+Ketik atau salin kode program berikut ke dalam fungsi main().
+
+```
+var record = ('first', a: 2, b: true, 'last');
+print(record)
+```
+
+Langkah 2:
+Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
+
+> Kode tersebut mendemonstrasikan pembuatan record dalam Dart yang dapat menampung elemen posisional dan named. Record ini berisi empat elemen: dua elemen posisional ('first' dan 'last') dan dua elemen named (a: 2 dan b: true). Ketika dicetak, outputnya akan menampilkan struktur record lengkap dengan semua elemennya seperti:<br>![Screenshot prak5_01](img/prak5_01.png)<br>
+
+Langkah 3:
+Tambahkan kode program berikut di luar scope void main(), lalu coba eksekusi (Run) kode Anda.
+
+```
+(int, int) tukar((int, int) record) {
+  var (a, b) = record;
+  return (b, a);
+}
+```
+
+Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Gunakan fungsi tukar() di dalam main() sehingga tampak jelas proses pertukaran value field di dalam Records.
+
+> Kode tersebut mendefinisikan fungsi tukar di luar scope main() yang menerima parameter berupa record (int, int) dan mengembalikan record dengan posisi nilai yang ditukar. Fungsi ini menggunakan destructuring untuk mengambil nilai a dan b dari record input, kemudian mengembalikan record baru (b, a) yang menukar posisi kedua nilai tersebut. Untuk mengeksekusi fungsi ini, perlu dipanggil dari dalam main() dengan memberikan record berisi dua integer sebagai argumen dengan kode:
+> ```
+>   print(tukar((1, 2)));
+> ```
+> Sehingga muncul output:<br>![Screenshot prak5_02](img/prak5_02.png)<br>
+
+Langkah 4:
+Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (Run) kode Anda.
+
+```
+// Record type annotation in a variable declaration:
+(String, int) mahasiswa;
+print(mahasiswa);
+```
+
+Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Inisialisasi field nama dan NIM Anda pada variabel record mahasiswa di atas. Dokumentasikan hasilnya dan buat laporannya!
+
+> Kode tersebut mendeklarasikan variabel mahasiswa sebagai record dengan tipe (String, int) yang terdiri dari string dan integer. Namun, kode ini akan menghasilkan error karena variabel mahasiswa tidak diinisialisasi dengan nilai dan record tidak boleh bernilai null secara default dengan output error:<br>![Screenshot prak5_03](img/prak5_03.png)<br>Untuk memperbaikinya, perlu memberikan nilai inisialisasi yang mana disini menggunakan nama NIM:
+> ```
+> (String, int) mahasiswa = ('Rio Tri Prayogo', 2341720236);
+> ```
+> Sehingga muncul output:<br>![Screenshot prak5_04](img/prak5_04.png)<br>
+
+Langkah 5:
+Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (Run) kode Anda.
+
+```
+var mahasiswa2 = ('first', a: 2, b: true, 'last');
+
+print(mahasiswa2.$1); // Prints 'first'
+print(mahasiswa2.a); // Prints 2
+print(mahasiswa2.b); // Prints true
+print(mahasiswa2.$2); // Prints 'last'
+```
+
+Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
+
+> Kode tersebut mendemonstrasikan cara mengakses elemen-elemen dalam record di Dart. Variabel mahasiswa2 adalah record yang berisi empat elemen: dua elemen posisional ('first' dan 'last') dan dua elemen named (a: 2 dan b: true). Untuk mengakses elemen posisional digunakan notasi $ diikuti nomor urut ($1, $2), sedangkan untuk elemen named digunakan notasi titik langsung dengan nama elemen (.a, .b). Output yang dihasilkan:<br>![Screenshot prak5_05](img/prak5_05.png)<br>
+
+Gantilah salah satu isi record dengan nama dan NIM Anda, lalu dokumentasikan hasilnya dan buat laporannya!
+
+> Untuk mengganti isi record dengan nama nim bisa menggunakan kode:
+> ```
+>   var mahasiswa2 = ('Rio Tri Prayogo', a: 2341720236, b: true, 'last');
+> ```
+> Sehingga jika di print akan menjadi:<br>![Screenshot prak5_06](img/prak5_06.png)<br>
+
+**_[Praktikum 5 Code](src/praktikum5.dart)_**
 
 **Tugas Praktikum**<br>
