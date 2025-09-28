@@ -49,6 +49,59 @@ Ubah kode pada langkah 1 menjadi variabel final yang mempunyai index = 5 dengan 
 **_[Praktikum 1 Code](src/praktikum1.dart)_**
 
 **Praktikum 2: Eksperimen Tipe Data Set**<br>
+Langkah 1:
+Ketik atau salin kode program berikut ke dalam fungsi main().
+
+```
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+print(halogens);
+```
+
+Langkah 2:
+Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
+
+> Kode tersebut merupakan penggunaan Set berisi lima elemen string berupa nama-nama unsur halogen, lalu dicetak menggunakan print() sehingga muncul output:<br>![Screenshot prak2_01](img/prak2_01.png)<br>
+
+Langkah 3:
+Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
+
+```
+var names1 = <String>{};
+Set<String> names2 = {}; // This works, too.
+var names3 = {}; // Creates a map, not a set.
+
+print(names1);
+print(names2);
+print(names3);
+```
+
+Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan ketiga variabel tersebut. Tambahkan elemen nama dan NIM Anda pada kedua variabel Set tersebut dengan dua fungsi berbeda yaitu .add() dan .addAll(). Untuk variabel Map dihapus, nanti kita coba di praktikum selanjutnya.
+
+> Kode tersebut menunjukkan tiga cara mendeklarasikan koleksi dalam Dart dengan hasil yang berbeda. Deklarasi pertama var names1 = {} dan kedua Set names2 = {} sama-sama membuat Set string kosong, yang merupakan kumpulan elemen unik tanpa urutan tertentu. Sedangkan deklarasi ketiga var names3 = {} justru membuat Map kosong, karena tanpa annotasi tipe eksplisit, Dart menganggap kurung kurawal sebagai pembentuk Map. Ketika dicetak, names1 dan names2 akan menampilkan set kosong {}, sementara names3 akan menampilkan map kosong {} yang secara internal merupakan struktur data berbeda meski tampilan outputnya sama yaitu:<br>![Screenshot prak2_02](img/prak2_02.png)<br>
+> Untuk penambahan elemen NIM dan nama dengan fungsi .add() dan .addAll() dengan kode
+> ```
+>  names1.add('Rio Tri Prayogo'); 
+>  names1.add('2341720236');
+>
+>  names2.addAll([
+>    'Rio Tri Prayogo',
+>    '2341720236',
+>  ]);
+>
+>  print(names1);
+>  print(names2);
+> ```
+> Dengan output:<br>![Screenshot prak2_03](img/prak2_03.png)<br>
+> Untuk Map bisa menggunakan kode:
+> ```
+>  names3['nama'] = 'Rio Tri Prayogo';
+>  names3['nim'] = '2341720236';
+>
+>  print(names3);
+> ```
+> Dengan output:<br>![Screenshot prak2_05](img/prak2_05.png)<br>
+
+**_[Praktikum 2 Code](src/praktikum2.dart)_**
 
 **Praktikum 3: Eksperimen Tipe Data Maps**<br>
 
