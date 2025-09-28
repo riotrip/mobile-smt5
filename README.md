@@ -312,3 +312,135 @@ Gantilah salah satu isi record dengan nama dan NIM Anda, lalu dokumentasikan has
 **_[Praktikum 5 Code](src/praktikum5.dart)_**
 
 **Tugas Praktikum**<br>
+1. Silakan selesaikan Praktikum 1 sampai 5, lalu dokumentasikan berupa screenshot hasil pekerjaan Anda beserta penjelasannya!
+2. Jelaskan yang dimaksud Functions dalam bahasa Dart!
+> Functions dalam Dart adalah blok kode yang dapat dipanggil berulang kali untuk melakukan tugas tertentu. Mereka dapat menerima parameter, mengembalikan nilai, dan membantu dalam organisasi kode.
+3. Jelaskan jenis-jenis parameter di Functions beserta contoh sintaksnya!
+> Ada 4 jenis parameter dalam Dart yaitu:
+> 1. Required Positional: Parameter wajib sesuai urutan
+> ```
+> void greet(String name, int age) {...}
+> ```
+> 2. Optional Positional: Parameter opsional dalam kurung siku
+> ```
+> void greet(String name, [int? age]) {...}
+> ```
+> 3. Named Parameters: Parameter dengan nama spesifik dalam kurung kurawal
+> ```
+> void greet({required String name, int? age}) {...}
+> ```
+> 4. Default Parameters: Nilai default jika tidak diberikan
+> ```
+> void greet(String name, {int age = 18}) {...}
+> ```
+4. Jelaskan maksud Functions sebagai first-class objects beserta contoh sintaknya!
+> Functions dapat diperlakukan seperti objek biasa yang mana dapat disimpan dalam variabel, dikirim sebagai parameter, atau dikembalikan dari function lain. Contoh:
+> ```
+> // Function disimpan dalam variabel
+> var penjumlahan = (int a, int b) => a + b;
+>
+> // Function sebagai parameter
+> void hitung(int a, int b, Function operasi) {
+>   print(operasi(a, b));
+> }
+> 
+> // Function mengembalikan function
+> Function multiplier(int factor) {
+>   return (int value) => value * factor;
+> }
+> 
+> void main() {
+>   hitung(5, 3, penjumlahan); // Output: 8
+>   
+>   var kaliDua = multiplier(2);
+>   print(kaliDua(5)); // Output: 10
+> }
+> ```
+5. Apa itu Anonymous Functions? Jelaskan dan berikan contohnya!
+> Anonymous functions adalah function tanpa nama, biasanya digunakan untuk callback atau operasi sederhana. Contohnya:
+> ```
+> void main() {
+>   var list = [1, 2, 3];
+>   
+>   // Anonymous function dengan forEach
+>   list.forEach((item) {
+>     print(item * 2);
+>   });
+>   
+>   // Arrow syntax untuk single expression
+>   var doubled = list.map((item) => item * 2);
+>   print(doubled); // Output: (2, 4, 6)
+> }
+> ```
+6. Jelaskan perbedaan Lexical scope dan Lexical closures! Berikan contohnya!
+> Lexical Scope<br>
+> Variable dapat diakses dalam scope di mana mereka dideklarasikan.
+> ```
+> void main() {
+>   var x = 10;
+>   
+>   void innerFunction() {
+>     var y = 20;
+>     print(x); // Bisa mengakses x dari outer scope
+>   }
+>   
+>   innerFunction();
+>   // print(y); // Error: y tidak bisa diakses di sini
+> }
+> ```
+> Lexical Closures<br>
+> Function yang mengingat environment di mana mereka dibuat, bahkan setelah scope outer-nya selesai.
+> ```
+> Function makeCounter() {
+>   var count = 0;
+>   return () {
+>     count++;
+>     return count;
+>   };
+> }
+>
+> void main() {
+>   var counter = makeCounter();
+>   print(counter()); // Output: 1
+>   print(counter()); // Output: 2
+>   print(counter()); // Output: 3
+>   // Variable 'count' tetap diingat meskipun makeCounter() sudah selesai
+> }
+> ```
+7. Jelaskan dengan contoh cara membuat return multiple value di Functions!
+> Dart tidak mendukung multiple return value langsung, tetapi dapat menggunakan:
+> List:Untuk ordered collection dengan index
+> ```
+> List getData() => ["Rio", 2341720236, true];
+> 
+> var data = getData();
+> print(data[0]); // "Rio"
+> print(data[1]); // 2341720236
+> ```
+> Set: Untuk kumpulan value unik
+> ```
+> Set getData() => ["Rio", 2341720236, true];
+> 
+> var data = getData();
+> print(data.first); // "Rio"
+> print(data.contains(2341720236)); // true
+> ```
+> Map: Untuk data dengan key-value pairs
+> ```
+> Map getData() => {'name': 'Rio', 'nim': 2341720236};
+> 
+> var data = getData();
+> print(data['nama']); // "Rio"
+> print(data['nim']); // 2341720236
+> ```
+> Record: Untuk return value yang fixed structure
+> ```
+> (String, int, bool) getData() => ("Rio", 2341720236, true);
+> 
+> var (name, nim, isActive) = getData();;
+> print(nama); // "Rio"
+> print(nim); // 2341720236
+> print(isActive); // true
+> ```
+
+Kumpulkan berupa link commit repo GitHub kepada dosen pengampu sesuai kesepakatan di kelas!
