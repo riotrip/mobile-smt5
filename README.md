@@ -104,6 +104,56 @@ Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan 
 **_[Praktikum 2 Code](src/praktikum2.dart)_**
 
 **Praktikum 3: Eksperimen Tipe Data Maps**<br>
+Langkah 1:
+Ketik atau salin kode program berikut ke dalam fungsi main().
+
+```
+var gifts = {
+  // Key:    Value
+  'first': 'partridge',
+  'second': 'turtledoves',
+  'fifth': 1
+};
+
+var nobleGases = {
+  2: 'helium',
+  10: 'neon',
+  18: 2,
+};
+
+print(gifts);
+print(nobleGases);
+```
+
+Langkah 2:
+Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
+
+> Kode tersebut mendemonstrasikan pembuatan Map dalam Dart dengan tipe data yang dinamis. Variabel gifts merupakan Map yang menggunakan key string dengan value campuran string dan integer, sedangkan nobleGases menggunakan key integer dengan value yang juga campuran string dan integer. Ketika dicetak, kedua Map tersebut akan menampilkan seluruh pasangan key-value yang dimilikinya yaitu:<br>![Screenshot prak3_01](img/prak3_01.png)<br>
+
+Langkah 3:
+Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
+
+```
+var mhs1 = Map<String, String>();
+gifts['first'] = 'partridge';
+gifts['second'] = 'turtledoves';
+gifts['fifth'] = 'golden rings';
+
+var mhs2 = Map<int, String>();
+nobleGases[2] = 'helium';
+nobleGases[10] = 'neon';
+nobleGases[18] = 'argon';
+```
+
+Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
+
+> Kode diatas menunjukkan dua cara inisialisasi Map dalam Dart. Pertama, mhs1 diinisialisasi sebagai Map<String, String>() dan diisi dengan tiga pasangan key-value string. Kedua, mhs2 diinisialisasi sebagai Map<int, String>() dan diisi dengan pasangan key integer dan value string yang akhirnya menunjukkan output:<br>![Screenshot prak3_02](img/prak3_02.png)<br>
+
+Tambahkan elemen nama dan NIM Anda pada tiap variabel di atas (gifts, nobleGases, mhs1, dan mhs2). Dokumentasikan hasilnya dan buat laporannya!
+
+> Menambahkan elemen nama dan NIM Anda pada tiap variabel dengan kode dalam: **_[Praktikum 3 Code](src/praktikum3.dart)_** dengan output:<br>![Screenshot prak3_03](img/prak3_03.png)<br>
+
+**_[Praktikum 3 Code](src/praktikum3.dart)_**
 
 **Praktikum 4: Eksperimen Tipe Data List: Spread dan Control-flow Operators**<br>
 
