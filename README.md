@@ -1,13 +1,9 @@
-# Pemrograman Mobile - Semester 5
+# Pemrograman Mobile
 
-**Nama**        : Rio Tri Prayogo
+**Nama** : Rio Tri Prayogo
 
-**NIM**         : 2341720236
+**NIM** : 2341720236
 
-**No. Absen**   : 25
+## 05 | Aplikasi Pertama dan Widget Dasar Flutter
 
-**Kelas**       : TI 3F
-
-**D-IV Teknik Informatika**
-
-**Politeknik Negeri Malang**
+### Praktikum
