@@ -30,6 +30,11 @@ Jika sudah selesai proses pembuatan project baru, pastikan tampilan seperti beri
 > <br>![Screenshot prak1_04](img/prak1_04.png)<br>
 
 **Praktikum 2: Menghubungkan Perangkat Android atau Emulator**<br>
+Melanjutkan dari praktikum 1, Anda diminta untuk menjalankan aplikasi ke perangkat fisik (device Android atau iOS). Silakan ikuti langkah-langkah pada codelab tautan berikut ini.
+
+https://developer.android.com/codelabs/basic-android-kotlin-compose-connect-device?hl=id#0
+
+> <br>![Screenshot prak2_01](img/prak2_01.png)<br><br>![Screenshot prak2_02](img/prak2_02.jpg)<br>
 
 **Praktikum 3: Membuat Repository GitHub dan Laporan Praktikum**<br>
 
