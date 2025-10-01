@@ -37,6 +37,11 @@ https://developer.android.com/codelabs/basic-android-kotlin-compose-connect-devi
 > <br>![Screenshot prak2_01](img/prak2_01.png)<br><br>![Screenshot prak2_02](img/prak2_02.jpg)<br>
 
 **Praktikum 3: Membuat Repository GitHub dan Laporan Praktikum**<br>
+Membuat Github:
+https://github.com/riotrip/mobile-smt5/tree/codelab05_first_app_widget_dasar_flutter
+
+Debug awal Flutter:
+> <br>![Screenshot prak3_01](img/prak3_01.png)<br>
 
 **Praktikum 4: Menerapkan Widget Dasar**<br>
 
