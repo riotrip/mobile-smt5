@@ -227,8 +227,6 @@ Pada langkah terakhir ini, atur semua elemen dalam ListView, bukan Column, karen
 
 **Praktikum 5: Membangun Navigasi di Flutter**<br>
 
-**Tugas Praktikum 2**<br>
-
 Langkah 1: Siapkan project baru
 Sebelum melanjutkan praktikum, buatlah sebuah project baru Flutter dengan nama belanja dan susunan folder seperti pada gambar berikut. Penyusunan ini dimaksudkan untuk mengorganisasi kode dan widget yang lebih mudah.
 
@@ -332,3 +330,21 @@ Untuk menambahkan sentuhan, letakkan cursor pada widget pembuka Card. Kemudian g
 Jalankan aplikasi kembali dan pastikan ListView dapat disentuh dan berpindah ke halaman berikutnya. Periksa kembali jika terdapat kesalahan.
 
 > <br>![Screenshot prak5_02](img/prak5_02.png)<br>
+
+**Tugas Praktikum 2**<br>
+
+1. Untuk melakukan pengiriman data ke halaman berikutnya, cukup menambahkan informasi arguments pada penggunaan Navigator. Perbarui kode pada bagian Navigator menjadi seperti berikut.
+```
+Navigator.pushNamed(context, '/item', arguments: item);
+```
+2. Pembacaan nilai yang dikirimkan pada halaman sebelumnya dapat dilakukan menggunakan ModalRoute. Tambahkan kode berikut pada blok fungsi build dalam halaman ItemPage. Setelah nilai didapatkan, anda dapat menggunakannya seperti penggunaan variabel pada umumnya. (https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments)
+```
+final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
+```
+3. Pada hasil akhir dari aplikasi belanja yang telah anda selesaikan, tambahkan atribut foto produk, stok, dan rating. Ubahlah tampilan menjadi GridView seperti di aplikasi marketplace pada umumnya.
+4. Silakan implementasikan Hero widget pada aplikasi belanja Anda dengan mempelajari dari sumber ini: https://docs.flutter.dev/cookbook/navigation/hero-animations
+5. Sesuaikan dan modifikasi tampilan sehingga menjadi aplikasi yang menarik. Selain itu, pecah widget menjadi kode yang lebih kecil. Tambahkan Nama dan NIM di footer aplikasi belanja Anda.
+6. Selesaikan Praktikum 5: Navigasi dan Rute tersebut. Cobalah modifikasi menggunakan plugin go_router, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!
+
+> <br>![Screenshot prakt1_01](img/prakt1_01.png)<br>
+> <br>![Screenshot prakt1_02](img/prakt1_02.png)<br>

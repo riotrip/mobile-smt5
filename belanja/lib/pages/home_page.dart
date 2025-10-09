@@ -1,48 +1,62 @@
 import 'package:flutter/material.dart';
-import '../models/item.dart';
+import 'package:go_router/go_router.dart';
+import '../widgets/footer.dart';
+import '../widgets/app_bar_title.dart';
+import '../widgets/page_header.dart';
+import '../widgets/product_card.dart';
+import '../data/item_data.dart';
 
 class HomePage extends StatelessWidget {
-  final List<Item> items = [
-    Item(name: 'Sugar', price: 5000),
-    Item(name: 'Salt', price: 2000),
-  ];
-
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final items = ItemData.items;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Shopping List'),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        title: AppBarTitle(
+          title: 'Shopping',
+          icon: Icons.shopping_bag_outlined,
+        ),
+        centerTitle: false,
       ),
-      body: Container(
-        margin: EdgeInsets.all(8),
-        child: ListView.builder(
-          padding: EdgeInsets.all(8),
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            final item = items[index];
-            return InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, '/item');
-              },
-              child: Card(
-                child: Container(
-                  margin: EdgeInsets.all(8),
-                  child: Row(
-                    children: [
-                      Expanded(child: Text(item.name)),
-                      Expanded(
-                        child: Text(
-                          item.price.toString(),
-                          textAlign: TextAlign.end,
-                        ),
-                      ),
-                    ],
-                  ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(20, 8, 20, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header section
+            PageHeader(title: 'Products', subtitle: 'Find what you need'),
+            // Products grid
+            Expanded(
+              child: GridView.builder(
+                physics: BouncingScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
                 ),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  final item = items[index];
+                  return ProductCard(
+                    item: item,
+                    onTap: () {
+                      context.go('/item', extra: item);
+                    },
+                  );
+                },
               ),
-            );
-          },
+            ),
+            // Footer section
+            SizedBox(height: 20),
+            Footer(),
+          ],
         ),
       ),
     );

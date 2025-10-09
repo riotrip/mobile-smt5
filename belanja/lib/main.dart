@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'pages/item_page.dart';
-import 'pages/home_page.dart';
+import 'router/app_router.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      initialRoute: '/',
-      routes: {'/': (context) => HomePage(), '/item': (context) => ItemPage()},
-    ),
-  );
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      title: 'Belanja App',
+      routerConfig: AppRouter.router,
+    );
+  }
 }
