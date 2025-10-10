@@ -1,13 +1,13 @@
-# Pemrograman Mobile - Semester 5
+# Pemrograman Mobile
 
-**Nama**        : Rio Tri Prayogo
+**Nama** : Rio Tri Prayogo
 
-**NIM**         : 2341720236
+**NIM** : 2341720236
 
-**No. Absen**   : 25
+## 07 | Manajemen Plugin
 
-**Kelas**       : TI 3F
+### Praktikum
 
-**D-IV Teknik Informatika**
+**Praktikum Menerapkan Plugin di Project Flutter**<br>
 
-**Politeknik Negeri Malang**
+### Tugas Praktikum
