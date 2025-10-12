@@ -11,6 +11,7 @@
 **Praktikum Menerapkan Plugin di Project Flutter**<br>
 Langkah 1: Buat Project Baru
 Buatlah sebuah project flutter baru dengan nama flutter_plugin_pubdev. Lalu jadikan repository di GitHub Anda dengan nama flutter_plugin_pubdev.
+> <br>![Screenshot prak_01](img/prak_01.png)<br>
 
 Langkah 2: Menambahkan Plugin
 Tambahkan plugin auto_size_text menggunakan perintah berikut di terminal
@@ -18,6 +19,8 @@ Tambahkan plugin auto_size_text menggunakan perintah berikut di terminal
 flutter pub add auto_size_text
 ```
 Jika berhasil, maka akan tampil nama plugin beserta versinya di file pubspec.yaml pada bagian dependencies.
+> <br>![Screenshot prak_02](img/prak_02.png)<br>
+> <br>![Screenshot prak_03](img/prak_03.png)<br>
 
 Langkah 3: Buat file red_text_widget.dart
 Buat file baru bernama red_text_widget.dart di dalam folder lib lalu isi kode seperti berikut.
@@ -33,6 +36,28 @@ class RedTextWidget extends StatelessWidget {
   }
 }
 ```
+> <br>![Screenshot prak_04](img/prak_04.png)<br>
+> Kode tersebut error karena dua alasan utama: variabel text tidak didefinisikan sebagai parameter dalam class, dan widget AutoSizeText membutuhkan package tambahan yang belum diimport. Untuk memperbaikinya, kita perlu menambahkan parameter text dan mengimpor package auto_size_text atau menggantinya dengan widget Text bawaan Flutter. Untuk memperbaikinya bisa melakukan import package dan menginisiasi variabel Text yang nantinya kode akan menjadi:
+> ```
+> import 'package:flutter/material.dart';
+> import 'package:auto_size_text/auto_size_text.dart'; // Import package
+>
+> class RedTextWidget extends StatelessWidget {
+>   final String text; // Tambahkan parameter text
+>   
+>   const RedTextWidget({Key? key, required this.text}) : super(key: key);
+> 
+>   @override
+>   Widget build(BuildContext context) {
+>     return AutoSizeText(
+>       text,
+>       style: const TextStyle(color: Colors.red, fontSize: 14),
+>       maxLines: 2,
+>       overflow: TextOverflow.ellipsis,
+>     );
+>   }
+> }
+> ```
 
 Langkah 4: Tambah Widget AutoSizeText
 Masih di file red_text_widget.dart, untuk menggunakan plugin auto_size_text, ubahlah kode return Container() menjadi seperti berikut.
@@ -73,5 +98,6 @@ Container(
 ),
 ```
 Run aplikasi tersebut dengan tekan F5, maka hasilnya akan seperti berikut.
+> <br>![Screenshot prak_05](img/prak_05.png)<br>
 
 ### Tugas Praktikum
