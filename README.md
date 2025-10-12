@@ -101,3 +101,26 @@ Run aplikasi tersebut dengan tekan F5, maka hasilnya akan seperti berikut.
 > <br>![Screenshot prak_05](img/prak_05.png)<br>
 
 ### Tugas Praktikum
+1. Selesaikan Praktikum tersebut, lalu dokumentasikan dan push ke repository Anda berupa screenshot hasil pekerjaan beserta penjelasannya di file README.md!
+2. Jelaskan maksud dari langkah 2 pada praktikum tersebut!
+> Perintah flutter pub add auto_size_text digunakan untuk menambahkan plugin teks otomatis ke proyek Flutter. Jika berhasil, plugin tersebut akan tercantum beserta versinya di file pubspec.yaml pada bagian dependencies.
+3. Jelaskan maksud dari langkah 5 pada praktikum tersebut!
+> Penambahan variabel text dan parameter di constructor berfungsi untuk menerima input teks dari luar widget. Dengan demikian, widget RedTextWidget dapat menampilkan teks yang berbeda-beda setiap kali digunakan, membuatnya menjadi lebih fleksibel dan reusable.
+4. Pada langkah 6 terdapat dua widget yang ditambahkan, jelaskan fungsi dan perbedaannya!
+> Kedua widget menampilkan teks sama dalam container berwarna, tetapi berbeda jenis widget dan perilakunya. Widget pertama menggunakan RedTextWidget kustom yang otomatis menyesuaikan ukuran font dan memotong teks dengan ellipsis di container sempit (50), sementara widget kedua menggunakan Text bawaan tanpa penyesuaian otomatis di container lebih lebar (100).
+5. Jelaskan maksud dari tiap parameter yang ada di dalam plugin auto_size_text berdasarkan tautan pada dokumentasi ini !
+> Berdasarkan dokumentasi AutoSizeText ada beberapa parameter yaitu:
+> - text (String): Teks yang akan ditampilkan (wajib)
+> - style (TextStyle): Gaya teks seperti warna, ukuran font, berat
+> - maxLines (int): Jumlah maksimum baris teks
+> - overflow (TextOverflow): Cara menangani teks yang melebihi area (ellipsis, clip, dll)
+> - textAlign (TextAlign): Perataan teks (kiri, kanan, tengah, justify)
+> - minFontSize (double): Ukuran font minimum untuk penyusutan otomatis
+> - maxFontSize (double): Ukuran font maksimum
+> - stepGranularity (double): Langkah penyesuaian ukuran font
+> - presetFontSizes (List<double>): Daftar ukuran font yang diperbolehkan
+> - group (AutoSizeGroup): Grup untuk sinkronisasi ukuran font antar widget
+> - wrapWords (bool): Apakah memecah kata saat penyusutan
+> 
+> Parameter-parameter ini memungkinkan kontrol detail terhadap perilaku penyesuaian ukuran teks otomatis.
+6. Kumpulkan laporan praktikum Anda berupa link repository GitHub kepada dosen!
