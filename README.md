@@ -23,12 +23,7 @@ Untuk menambahkan dependensi plugin, jalankan perintah flutter pub add seperti b
 ```
 flutter pub add camera path_provider path
 ```
-```
-<key>NSCameraUsageDescription</key>
-<string>Explanation on why the camera access is needed.</string>
-<key>NSMicrophoneUsageDescription</key>
-<string>Explanation on why the microphone access is needed.</string>
-```
+> <br>![Screenshot prak1_01](img/prak1_01.png)<br>
 
 Langkah 3: Ambil Sensor Kamera dari device
 
@@ -253,3 +248,5 @@ lib/widget/takepicture_screen.dart
           }
 ```
 Silakan deploy pada device atau smartphone Anda dan perhatikan hasilnya! 🙂
+
+> <br>![Screenshot prak1_02](img/prak1_02.gif)<br>
