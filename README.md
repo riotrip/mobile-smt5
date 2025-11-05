@@ -1,13 +1,11 @@
-# Pemrograman Mobile - Semester 5
+# Pemrograman Mobile
 
-**Nama**        : Rio Tri Prayogo
+**Nama** : Rio Tri Prayogo
 
-**NIM**         : 2341720236
+**NIM** : 2341720236
 
-**No. Absen**   : 25
+## 10 | Dasar State Management
 
-**Kelas**       : TI 3F
+### Praktikum
 
-**D-IV Teknik Informatika**
-
-**Politeknik Negeri Malang**
+**Praktikum 1: Dasar State dengan Model-View**<br>
