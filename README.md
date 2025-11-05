@@ -624,3 +624,13 @@ import 'package:flutter/rendering.dart' show ViewportOffset;
 ```
 
 > <br>![Screenshot prak2_01](img/prak2_01.gif)<br>
+
+### Tugas Praktikum
+1. Selesaikan Praktikum 1 dan 2, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md! Jika terdapat error atau kode yang tidak dapat berjalan, silakan Anda perbaiki sesuai tujuan aplikasi dibuat!
+2. Gabungkan hasil praktikum 1 dengan hasil praktikum 2 sehingga setelah melakukan pengambilan foto, dapat dibuat filter carouselnya!
+> <br>![Screenshot prak_tugas](img/prak_tugas.gif)<br>
+3. Jelaskan maksud void async pada praktikum 1?
+> Void async pada codelab kamera Flutter menunjukkan fungsi yang berjalan secara asynchronous tanpa mengembalikan nilai. Digunakan untuk operasi inisialisasi kamera yang membutuhkan waktu (seperti memuat kamera atau mengonfigurasi controller), tetapi tidak perlu menghasilkan return value. Dengan async, proses tidak memblokir UI, sehingga aplikasi tetap responsif selama kamera disiapkan.
+4. Jelaskan fungsi dari anotasi @immutable dan @override ?
+> Anotasi @immutable menandakan bahwa class tidak dapat diubah setelah dibuat dengan semua properti harus bersifat final, sehingga optimal untuk widget Flutter, sedangkan @override menunjukkan bahwa method tersebut menimpa implementasi dari parent class-nya untuk memastikan kejelasan hubungan inheritance dan membantu compiler dalam verifikasi.
+5. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!

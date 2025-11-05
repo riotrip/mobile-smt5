@@ -1,0 +1,141 @@
+import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'filter_selector.dart';
+import 'displaypicture_screen.dart';
+
+// A screen that allows users to take a picture using a given camera with real-time filters.
+class TakePictureScreen extends StatefulWidget {
+  const TakePictureScreen({super.key, required this.camera});
+
+  final CameraDescription camera;
+
+  @override
+  TakePictureScreenState createState() => TakePictureScreenState();
+}
+
+class TakePictureScreenState extends State<TakePictureScreen> {
+  late CameraController _controller;
+  late Future<void> _initializeControllerFuture;
+
+  // Filter setup
+  final _filters = [
+    Colors.white,
+    ...List.generate(
+      Colors.primaries.length,
+      (index) => Colors.primaries[(index * 4) % Colors.primaries.length],
+    ),
+  ];
+
+  final _filterColor = ValueNotifier<Color>(Colors.white);
+
+  @override
+  void initState() {
+    super.initState();
+    // To display the current output from the Camera,
+    // create a CameraController.
+    _controller = CameraController(
+      // Get a specific camera from the list of available cameras.
+      widget.camera,
+      // Define the resolution to use.
+      ResolutionPreset.medium,
+    );
+
+    // Next, initialize the controller. This returns a Future.
+    _initializeControllerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the controller when the widget is disposed.
+    _controller.dispose();
+    _filterColor.dispose();
+    super.dispose();
+  }
+
+  void _onFilterChanged(Color value) {
+    _filterColor.value = value;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Camera with Filters - 2341720236')),
+      // You must wait until the controller is initialized before displaying the
+      // camera preview. Use a FutureBuilder to display a loading spinner until the
+      // controller has finished initializing.
+      body: FutureBuilder<void>(
+        future: _initializeControllerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // If the Future is complete, display the preview with filter.
+            return Stack(
+              children: [
+                Positioned.fill(child: _buildCameraPreviewWithFilter()),
+                Positioned(
+                  left: 0.0,
+                  right: 0.0,
+                  bottom: 0.0,
+                  child: FilterSelector(
+                    onFilterChanged: _onFilterChanged,
+                    filters: _filters,
+                    controller: _controller,
+                  ),
+                ),
+              ],
+            );
+          } else {
+            // Otherwise, display a loading indicator.
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        // Provide an onPressed callback.
+        onPressed: () async {
+          // Take the Picture in a try / catch block. If anything goes wrong,
+          // catch the error.
+          try {
+            // Ensure that the camera is initialized.
+            await _initializeControllerFuture;
+
+            // Attempt to take a picture and get the file `image`
+            // where it was saved.
+            final image = await _controller.takePicture();
+
+            if (!context.mounted) return;
+
+            // If the picture was taken, display it on a new screen.
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DisplayPictureScreen(
+                  // Pass the automatically generated path to
+                  // the DisplayPictureScreen widget.
+                  imagePath: image.path,
+                ),
+              ),
+            );
+          } catch (e) {
+            // If an error occurs, log the error to the console.
+            print(e);
+          }
+        },
+        child: const Icon(Icons.camera_alt),
+      ),
+    );
+  }
+
+  Widget _buildCameraPreviewWithFilter() {
+    return ValueListenableBuilder(
+      valueListenable: _filterColor,
+      builder: (context, color, child) {
+        return ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            color.withOpacity(0.5),
+            BlendMode.color,
+          ),
+          child: CameraPreview(_controller),
+        );
+      },
+    );
+  }
+}
