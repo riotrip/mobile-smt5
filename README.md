@@ -107,7 +107,7 @@ Tambahkan method ini ke dalam class _FuturePageState yang berguna untuk mengambi
 > Soal 2
 > - Carilah judul buku favorit Anda di Google Books, lalu ganti ID buku pada variabel path di kode tersebut. Caranya ambil di URL browser Anda seperti gambar berikut ini.
 > - Kemudian cobalah akses di browser URI tersebut dengan lengkap seperti ini. Jika menampilkan data JSON, maka Anda telah berhasil. Lakukan capture milik Anda dan tulis di README pada laporan praktikum. Lalu lakukan commit dengan pesan "W11: Soal 2".
-> > answer
+> > <br>![Screenshot prak1_02](img/prak1_02.png)<br>
 
 Langkah 5: Tambah kode di ElevatedButton
 
