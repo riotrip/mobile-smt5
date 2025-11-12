@@ -186,3 +186,84 @@ Langkah 4: Run
 Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
 
 > <br>![Screenshot prak2_01](img/prak2_01.png)<br>
+
+**Praktikum 3: Menggunakan Completer di Future**<br>
+
+Langkah 1: Buka main.dart
+
+Pastikan telah impor package async berikut.
+```
+import 'package:async/async.dart';
+```
+
+Langkah 2: Tambahkan variabel dan method
+
+Tambahkan variabel late dan method di class _FuturePageState seperti ini.
+```
+late Completer completer;
+
+Future getNumber() {
+  completer = Completer<int>();
+  calculate();
+  return completer.future;
+}
+
+Future calculate() async {
+  await Future.delayed(const Duration(seconds : 5));
+  completer.complete(42);
+}
+```
+
+Langkah 3: Ganti isi kode onPressed()
+
+Tambahkan kode berikut pada fungsi onPressed(). Kode sebelumnya bisa Anda comment.
+```
+                getNumber().then((value) {
+                  setState(() {
+                    result = value.toString();
+                  });
+                });
+```
+
+Langkah 4:
+
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Setelah 5 detik, maka angka 42 akan tampil.
+
+> <br>![Screenshot prak3_01](img/prak3_01.png)<br>
+
+> Soal 5
+> - Jelaskan maksud kode langkah 2 tersebut!
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".
+> > answer
+
+Langkah 5: Ganti method calculate()
+
+Gantilah isi code method calculate() seperti kode berikut, atau Anda dapat membuat calculate2()
+```
+  Future calculate() async {
+    try {
+      await Future.delayed(const Duration(seconds: 5));
+      completer.complete(42);
+    } catch (_) {
+      completer.completeError({});
+    }
+  }
+```
+
+Langkah 6: Pindah ke onPressed()
+
+Ganti menjadi kode seperti berikut.
+```
+getNumber().then((value) {
+  setState(() {
+    result = value.toString();
+  });
+}).catchError((e) {
+  result = 'An error occurred';
+});
+```
+
+> Soal 6
+> - Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 6".
+> > answer
