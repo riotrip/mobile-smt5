@@ -326,3 +326,68 @@ final futures = Future.wait<int>([
 > Soal 8
 > - Jelaskan maksud perbedaan kode langkah 1 dan 4!
 > > answer
+
+**Praktikum 5: Menangani Respon Error pada Async Code**<br>
+
+Langkah 1: Buka file main.dart
+
+Tambahkan method ini ke dalam class _FuturePageState
+```
+  Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened!');
+  }
+```
+
+Langkah 2: ElevatedButton
+
+Ganti dengan kode berikut
+```
+returnError()
+    .then((value) {
+      setState(() {
+        result = 'Success';
+      });
+    })
+    .catchError((onError) {
+      setState(() {
+        result = onError.toString();
+      });
+    })
+    .whenComplete(() => print('Complete'));
+```
+
+Langkah 3: Run
+
+Lakukan run dan klik tombol GO! maka akan menghasilkan seperti gambar berikut.
+
+> <br>![Screenshot prak5_01](img/prak5_01.png)<br>
+
+Pada bagian debug console akan melihat teks Complete seperti berikut.
+
+> <br>![Screenshot prak5_02](img/prak5_02.png)<br>
+
+> Soal 9
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9".
+> > answer
+
+Langkah 4: Tambah method handleError()
+
+Tambahkan kode ini di dalam class _FutureStatePage
+```
+  Future handleError() async {
+    try {
+      await returnError();
+    } catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    } finally {
+      print('Complete');
+    }
+  }
+```
+
+> Soal 10
+> - Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+> > <br>![Screenshot prak5_03](img/prak5_03.png)<br>
