@@ -136,3 +136,53 @@ Tambahkan kode pada onPressed di ElevatedButton seperti berikut.
 > > answer
 
 > <br>![Screenshot prak1_01](img/prak1_01.png)<br>
+
+**Praktikum 2: Menggunakan await/async untuk menghindari callbacks**<br>
+
+Langkah 1: Buka file main.dart
+
+Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageState.
+```
+Future<int> returnOneAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 1;
+}
+
+Future<int> returnTwoAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 2;
+}
+
+Future<int> returnThreeAsync() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 3;
+}
+```
+
+Langkah 2: Tambah method count()
+
+Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya.
+```
+  Future count() async {
+    int total = 0;
+    total = await returnOneAsync();
+    total += await returnTwoAsync();
+    total += await returnThreeAsync();
+    setState(() {
+      result = total.toString();
+    });
+  }
+```
+
+Langkah 3: Panggil count()
+
+Lakukan comment kode sebelumnya, ubah isi kode onPressed() menjadi seperti berikut.
+```
+
+```
+
+Langkah 4: Run
+
+Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+
+> <br>![Screenshot prak2_01](img/prak2_01.png)<br>
