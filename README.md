@@ -637,3 +637,131 @@ else if (snapshot.connectionState == ConnectionState.done) {
 >
 > - Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
 > - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
+
+**Praktikum 8: Navigation route dengan Future Function**<br>
+
+Langkah 1: Buat file baru navigation_first.dart
+
+Buatlah file baru ini di project lib Anda.
+
+Langkah 2: Isi kode navigation_first.dart
+```
+import 'package:flutter/material.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(title: const Text('Navigation First Screen - Rio')),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Change Color'),
+          onPressed: () {
+            _navigateAndGetColor(context);
+          },
+        ),
+      ),
+    );
+  }
+}
+```
+
+> Soal 15
+> - Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+> > ```appBar: AppBar(title: const Text('Navigation First Screen - Rio')),```
+> - Silakan ganti dengan warna tema favorit Anda.
+> > ```Color color = Colors.grey;```
+
+Langkah 3: Tambah method di class _NavigationFirstState
+
+Tambahkan method ini.
+```
+Future _navigateAndGetColor(BuildContext context) async {
+   color = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const NavigationSecond()),) ?? Colors.blue;
+   setState(() {});
+   });
+}
+```
+
+Langkah 4: Buat file baru navigation_second.dart
+
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
+
+Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+```
+import 'package:flutter/material.dart';
+
+class NavigationSecond extends StatefulWidget {
+  const NavigationSecond({super.key});
+
+  @override
+  State<NavigationSecond> createState() => _NavigationSecondState();
+}
+
+class _NavigationSecondState extends State<NavigationSecond> {
+  @override
+  Widget build(BuildContext context) {
+    Color color;
+    return Scaffold(
+      appBar: AppBar(title: const Text('Navigation Second Screen - Rio')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              child: const Text('Red'),
+              onPressed: () {
+                color = Colors.red.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Green'),
+              onPressed: () {
+                color = Colors.green.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Blue'),
+              onPressed: () {
+                color = Colors.blue.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+Langkah 6: Edit main.dart
+
+Lakukan edit properti home.
+```
+home: const NavigationFirst(),
+```
+
+Langkah 8: Run
+
+Lakukan run, jika terjadi error silakan diperbaiki.
+
+> <br>![Screenshot prak8_01](img/prak8_01.png)<br><br>![Screenshot prak8_02](img/prak8_02.png)<br><br>![Screenshot prak8_03](img/prak8_03.png)<br><br>![Screenshot prak8_04](img/prak8_04.png)<br><br>![Screenshot prak8_05](img/prak8_05.png)<br>
+
+> Soal 16
+> - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+> - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
+
