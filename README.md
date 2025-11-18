@@ -645,6 +645,7 @@ Langkah 1: Buat file baru navigation_first.dart
 Buatlah file baru ini di project lib Anda.
 
 Langkah 2: Isi kode navigation_first.dart
+
 ```
 import 'package:flutter/material.dart';
 
@@ -676,14 +677,16 @@ class _NavigationFirstState extends State<NavigationFirst> {
 ```
 
 > Soal 15
+>
 > - Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
-> > ```appBar: AppBar(title: const Text('Navigation First Screen - Rio')),```
+>   > `appBar: AppBar(title: const Text('Navigation First Screen - Rio')),`
 > - Silakan ganti dengan warna tema favorit Anda.
-> > ```Color color = Colors.grey;```
+>   > `Color color = Colors.grey;`
 
-Langkah 3: Tambah method di class _NavigationFirstState
+Langkah 3: Tambah method di class \_NavigationFirstState
 
 Tambahkan method ini.
+
 ```
 Future _navigateAndGetColor(BuildContext context) async {
    color = await Navigator.push(context,
@@ -698,6 +701,7 @@ Langkah 4: Buat file baru navigation_second.dart
 Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
 
 Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+
 ```
 import 'package:flutter/material.dart';
 
@@ -750,6 +754,7 @@ class _NavigationSecondState extends State<NavigationSecond> {
 Langkah 6: Edit main.dart
 
 Lakukan edit properti home.
+
 ```
 home: const NavigationFirst(),
 ```
@@ -761,7 +766,120 @@ Lakukan run, jika terjadi error silakan diperbaiki.
 > <br>![Screenshot prak8_01](img/prak8_01.png)<br><br>![Screenshot prak8_02](img/prak8_02.png)<br><br>![Screenshot prak8_03](img/prak8_03.png)<br><br>![Screenshot prak8_04](img/prak8_04.png)<br><br>![Screenshot prak8_05](img/prak8_05.png)<br>
 
 > Soal 16
+>
 > - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
 > - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
 > - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
 
+**Praktikum 9: Memanfaatkan async/await dengan Widget Dialog**<br>
+
+Langkah 1: Buat file baru navigation_dialog.dart
+Buat file dart baru di folder lib project Anda.
+
+Langkah 2: Isi kode navigation_dialog.dart
+
+```
+import 'package:flutter/material.dart';
+
+class NavigationDialogScreen extends StatefulWidget {
+  const NavigationDialogScreen({super.key});
+
+  @override
+  State<NavigationDialogScreen> createState() => _NavigationDialogScreenState();
+}
+
+class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(title: const Text('Navigation Dialog Screen - Rio')),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Change Color'),
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
+}
+```
+
+Langkah 3: Tambah method async
+
+```
+  _showColorDialog(BuildContext context) async {
+    await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text('Very important question'),
+          content: const Text('Please choose a color'),
+          actions: [
+            TextButton(
+              child: const Text('Red'),
+              onPressed: () {
+                setState(() {
+                  color = Colors.red.shade700;
+                  Navigator.pop(context, color);
+                });
+              },
+            ),
+            TextButton(
+              child: const Text('Green'),
+              onPressed: () {
+                setState(() {
+                  color = Colors.green.shade700;
+                  Navigator.pop(context, color);
+                });
+              },
+            ),
+            TextButton(
+              child: const Text('Blue'),
+              onPressed: () {
+                setState(() {
+                  color = Colors.blue.shade700;
+                  Navigator.pop(context, color);
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
+    setState(() {});
+  }
+```
+
+Langkah 4: Panggil method di ElevatedButton
+
+```
+          onPressed: () {
+            _showColorDialog(context);
+          },
+```
+
+Langkah 5: Edit main.dart
+
+Ubah properti home
+
+```
+home: const NavigationDialogScreen(),
+```
+
+Langkah 6: Run
+
+Coba ganti warna background dengan widget dialog tersebut. Jika terjadi error, silakan diperbaiki. Jika berhasil, akan tampil seperti gambar berikut.
+
+> <br>![Screenshot prak9_01](img/prak9_01.png)<br>
+
+> Soal 17
+>
+> - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+>   > <br>![Screenshot prak9_02](img/prak9_02.png)<br> <br>![Screenshot prak9_03](img/prak9_03.png)<br>> <br>![Screenshot prak9_04](img/prak9_04.png)<br>
+> - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+>   > <br>![Screenshot prak9_05](img/prak9_05.png)<br><br>![Screenshot prak9_06](img/prak9_06.png)<br> <br>![Screenshot prak9_07](img/prak9_07.png)<br>> <br>![Screenshot prak9_08](img/prak9_08.png)<br>
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
+>   > answer
