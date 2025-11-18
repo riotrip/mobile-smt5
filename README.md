@@ -367,3 +367,45 @@ Lakukan comment pada dua baris kode berikut, lalu ketik kode seperti berikut ini
 > - Jelaskan maksud kode langkah 13 sampai 15 tersebut!
 > - Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
 > - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
+
+**Praktikum 3: Injeksi data ke streams**<br>
+
+Langkah 1: Buka main.dart
+
+Tambahkan variabel baru di dalam class _StreamHomePageState
+```
+  late StreamTransformer transformer;
+```
+
+Langkah 2: Tambahkan kode ini di initState
+
+```
+    transformer = StreamTransformer<int, int>.fromHandlers(
+      handleData: (value, sink) {
+        sink.add(value * 10);
+      },
+      handleError: (error, stackTrace, sink) {
+        sink.add(-1);
+      },
+      handleDone: (sink) => sink.close(),
+    );
+```
+
+Langkah 3: Tetap di initState
+
+Lakukan edit seperti kode berikut.
+```
+    stream.transform(transformer).listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    }).onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+    super.initState();
+```
+
+Langkah 4: Run
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Anda akan melihat tampilan angka dari 0 hingga 90.
