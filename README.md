@@ -202,3 +202,168 @@ Anda boleh comment atau hapus kode sebelumnya, lalu ketika kode seperti berikut.
 >
 > - Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
 > - Lakukan commit hasil jawaban Soal 5 dengan pesan "W12: Jawaban Soal 5"
+
+**Praktikum 2: Stream controllers dan sinks**<br>
+
+Langkah 1: Buka file stream.dart
+
+Lakukan impor dengan mengetik kode ini.
+```
+import 'dart:async';
+```
+
+Langkah 2: Tambah class NumberStream
+
+Tetap di file stream.dart tambah class baru seperti berikut.
+```
+class NumberStream {}
+```
+
+Langkah 3: Tambah StreamController
+
+Di dalam class NumberStream buatlah variabel seperti berikut.
+```
+  final StreamController<int> controller = StreamController<int>();
+```
+
+Langkah 4: Tambah method addNumberToSink
+
+Tetap di class NumberStream buatlah method ini
+```
+  void addNumberToSink(int number) {
+    controller.sink.add(number);
+  }
+```
+
+Langkah 5: Tambah method close()
+```
+  close() {
+    controller.close();
+  }
+```
+
+Langkah 6: Buka main.dart
+
+Ketik kode import seperti berikut
+```
+import 'dart:async';
+import 'dart:math';
+```
+
+Langkah 7: Tambah variabel
+
+Di dalam class _StreamHomePageState ketik variabel berikut
+```
+  int lastNumber = 0;
+  late StreamController numberStreamController;
+  late NumberStream numberStream;
+```
+
+Langkah 8: Edit initState()
+
+```
+  @override
+  void initState() {
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    Stream stream = numberStreamController.stream;
+    stream.listen((eventNumber) {
+      setState(() {
+        lastNumber = eventNumber;
+      });
+    });
+    super.initState();
+  }
+```
+
+Langkah 9: Edit dispose()
+
+```
+  @override
+  void dispose() {
+    numberStreamController.close();
+    super.dispose();
+  }
+```
+
+Langkah 10: Tambah method addRandomNumber()
+
+```
+void addRandomNumber() {
+  Random random = Random();
+  int myNum = random.nextInt(10);
+  numberStream.addNumberToSink(myNum);
+}
+```
+
+Langkah 11: Edit method build()
+
+```
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(lastNumber.toString()),
+            ElevatedButton(
+              onPressed: () => addRandomNumber(),
+              child: const Text('New Random Number'),
+            ),
+          ],
+        ),
+      ),
+```
+
+Langkah 12: Run
+Lakukan running pada aplikasi Flutter Anda, maka akan terlihat seperti gambar berikut.
+
+> <br>![Screenshot prak2_01](img/prak2_01.png)<br>
+
+> Soal 6
+> - Jelaskan maksud kode langkah 8 dan 10 tersebut!
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
+
+Langkah 13: Buka stream.dart
+
+Tambahkan method berikut ini.
+```
+  addError(){
+    controller.sink.addError("error");
+  }
+```
+
+Langkah 14: Buka main.dart
+
+Tambahkan method onError di dalam class StreamHomePageState pada method listen di fungsi initState() seperti berikut ini.
+```
+    stream
+        .listen((event) {
+          setState(() {
+            lastNumber = event;
+          });
+        })
+        .onError((error) {
+          setState(() {
+            lastNumber = -1;
+          });
+        });
+```        
+
+Langkah 15: Edit method addRandomNumber()
+
+Lakukan comment pada dua baris kode berikut, lalu ketik kode seperti berikut ini.
+```
+  void addRandomNumber() {
+    Random random = Random();
+    // int myNum = random.nextInt(10);
+    // numberStream.addNumberToSink(myNum);
+    numberStream.addError();
+  }
+```
+
+> Soal 7
+> - Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+> - Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
+> - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
