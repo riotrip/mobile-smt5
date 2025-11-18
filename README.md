@@ -546,6 +546,94 @@ Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan peru
 >   > <br>![Screenshot prak6_05](img/prak6_05.png)<br>
 >   > answer
 > - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".
-> > answer
+>   > answer
 
+**Praktikum 7: Manajemen Future dengan FutureBuilder**<br>
 
+Langkah 1: Modifikasi method getPosition()
+
+Buka file geolocation.dart kemudian ganti isi method dengan kode ini.
+
+```
+  Future<Position> getPosition() async {
+    await Geolocator.isLocationServiceEnabled();
+    await Future.delayed(const Duration(seconds: 3));
+    Position? position = await Geolocator.getCurrentPosition();
+    return position;
+  }
+```
+
+Langkah 2: Tambah variabel
+
+Tambah variabel ini di class \_LocationScreenState
+
+```
+  Future<Position>? position;
+```
+
+Langkah 3: Tambah initState()
+
+Tambah method ini dan set variabel position
+
+```
+  @override
+  void initState() {
+    super.initState();
+    position = getPosition();
+  }
+```
+
+Langkah 4: Edit method build()
+
+Ketik kode berikut dan sesuaikan. Kode lama bisa Anda comment atau hapus.
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location - Rio')),
+      body: Center(
+        child: FutureBuilder(
+          future: position,
+          builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return Text(snapshot.data.toString());
+            } else {
+              return const Text('');
+            }
+          },
+        ),
+      ),
+    );
+  }
+```
+
+> <br>![Screenshot prak7_01](img/prak7_01.png)<br>> <br>![Screenshot prak7_02](img/prak7_02.png)<br>
+
+> Soal 13
+>
+> - Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 13".
+> - Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.
+
+Langkah 5: Tambah handling error
+
+Tambahkan kode berikut untuk menangani ketika terjadi error. Kemudian hot restart.
+
+```
+else if (snapshot.connectionState == ConnectionState.done) {
+  if (snapshot.hasError) {
+     return Text('Something terrible happened!');
+  }
+  return Text(snapshot.data.toString());
+}
+```
+
+> <br>![Screenshot prak7_03](img/prak7_03.png)<br>> <br>![Screenshot prak7_04](img/prak7_04.png)<br>
+
+> Soal 14
+>
+> - Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
