@@ -74,8 +74,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
   @override
   void initState() {
     // super.initState();
-    // colorStream = ColorStream();
-    // changeColor();
+    colorStream = ColorStream();
+    changeColor();
 
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
@@ -130,8 +130,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
   void addRandomNumber() {
     Random random = Random();
-    // int myNum = random.nextInt(10);
-    // numberStream.addNumberToSink(myNum);
-    numberStream.addError();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
+    // numberStream.addError();
   }
 }

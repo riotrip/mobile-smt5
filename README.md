@@ -409,3 +409,5 @@ Lakukan edit seperti kode berikut.
 
 Langkah 4: Run
 Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Anda akan melihat tampilan angka dari 0 hingga 90.
+
+> <br>![Screenshot prak3_01](img/prak3_01.png)<br>
