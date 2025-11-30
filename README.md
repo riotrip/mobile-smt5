@@ -411,3 +411,110 @@ Langkah 4: Run
 Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Anda akan melihat tampilan angka dari 0 hingga 90.
 
 > <br>![Screenshot prak3_01](img/prak3_01.png)<br>
+
+**Praktikum 4: Subscribe ke stream events**<br>
+
+Langkah 1: Tambah variabel
+
+Tambahkan variabel berikut di class _StreamHomePageState
+```
+  late StreamSubscription subscription;
+```
+
+Langkah 2: Edit initState()
+
+Edit kode seperti berikut ini.
+```
+    @override
+    void initState() {
+      numberStream = NumberStream();
+      numberStreamController = numberStream.controller;
+      Stream stream = numberStreamController.stream;
+      subscription = stream.listen((event) {
+        setState(() {
+          lastNumber = event;
+        });
+      });
+      super.initState();
+    }
+```    
+
+Langkah 3: Tetap di initState()
+
+Tambahkan kode berikut ini.
+```
+    subscription.onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+```
+
+Langkah 4: Tambah properti onDone()
+
+Tambahkan dibawahnya kode ini setelah onError
+```
+    subscription.onDone(() {
+      print("OnDone was called");
+    });
+```
+
+Langkah 5: Tambah method baru
+
+Ketik method ini di dalam class _StreamHomePageState
+```
+    void stopStream() {
+      numberStreamController.close();
+    }
+```
+
+Langkah 6: Pindah ke method dispose()
+
+Jika method dispose() belum ada, Anda dapat mengetiknya dan dibuat override. Ketik kode ini didalamnya.
+```
+      subscription.cancel();
+```
+
+Langkah 7: Pindah ke method build()
+
+Tambahkan button kedua dengan isi kode seperti berikut ini.
+```
+            ElevatedButton(
+              onPressed: () => stopStream(),
+              child: const Text('Stop Subscription'),
+            ),
+```
+
+Langkah 8: Edit method addRandomNumber()
+
+Edit kode seperti berikut ini.
+```
+    void addRandomNumber() {
+      Random random = Random();
+      int myNum = random.nextInt(10);
+      if (!numberStreamController.isClosed) {
+        numberStream.addNumberToSink(myNum);
+      } else {
+        setState(() {
+          lastNumber = -1;
+        });
+      }
+    }
+```    
+
+Langkah 9: Run
+
+Anda akan melihat dua button seperti gambar berikut.
+
+> <br>![Screenshot prak4_01](img/prak4_01.png)<br>
+
+Langkah 10: Tekan button ‘Stop Subscription'
+
+Anda akan melihat pesan di Debug Console seperti berikut.
+
+> <br>![Screenshot prak4_02](img/prak4_02.png)<br>
+
+> Soal 9
+> - Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
