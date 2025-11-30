@@ -518,3 +518,66 @@ Anda akan melihat pesan di Debug Console seperti berikut.
 > - Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
 > - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 > - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
+
+**Praktikum 5: Multiple stream subscriptions**<br>
+
+Langkah 1: Buka file main.dart
+
+Ketik variabel berikut di class _StreamHomePageState
+```
+  late StreamSubscription subscription2;
+  String values = '';
+```
+
+Langkah 2: Edit initState()
+
+Ketik kode seperti berikut.
+```
+    subscription = stream.listen((event) {
+      setState(() {
+        values += '$event - ';
+      });
+    });
+
+    subscription2 = stream.listen((event) {
+      setState(() {
+        values += '$event - ';
+      });
+    });
+```
+
+Langkah 3: Run
+
+Lakukan run maka akan tampil error seperti gambar berikut.
+
+> <br>![Screenshot prak5_01](img/prak5_01.png)<br>
+
+> Soal 10
+> - Jelaskan mengapa error itu bisa terjadi ?
+
+Langkah 4: Set broadcast stream
+
+Ketik kode seperti berikut di method initState()
+```
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    Stream stream = numberStreamController.stream.asBroadcastStream();
+```
+
+Langkah 5: Edit method build()
+
+Tambahkan text seperti berikut
+```
+            Text(values),
+```
+
+Langkah 6: Run
+
+Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka terus bertambah sebanyak dua kali.
+
+> <br>![Screenshot prak5_02](img/prak5_02.png)<br>
+
+> Soal 11
+> - Jelaskan mengapa hal itu bisa terjadi ?
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
