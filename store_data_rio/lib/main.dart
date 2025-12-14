@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import './model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +35,25 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Pizza> myPizzas = [];
 
   int appCounter = 0;
+
+  String documentsPath = '';
+  String tempPath = '';
+
+  Future getPaths() async {
+    if (kIsWeb) {
+      setState(() {
+        documentsPath = 'Not available on web';
+        tempPath = 'Not available on web';
+      });
+    } else {
+      final docDir = await getApplicationDocumentsDirectory();
+      final tempDir = await getTemporaryDirectory();
+      setState(() {
+        documentsPath = docDir.path;
+        tempPath = tempDir.path;
+      });
+    }
+  }
 
   Future readAndWritePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -81,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
     readAndWritePreference();
+    getPaths();
   }
 
   @override
@@ -100,20 +122,15 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('You have opened the app $appCounter times'),
-                ElevatedButton(
-                  onPressed: () {
-                    deletePreference();
-                  },
-                  child: const Text('Reset counter'),
-                ),
-              ],
-            ),
+          Text('You have opened the app $appCounter times'),
+          ElevatedButton(
+            onPressed: () {
+              deletePreference();
+            },
+            child: const Text('Reset counter'),
           ),
+          Text('Doc Path: $documentsPath'),
+          Text('Temp Path: $tempPath'),
         ],
       ),
     );

@@ -504,6 +504,7 @@ Jalankan aplikasi. Tidak akan ada perubahan visual, tetapi kode Anda kini lebih 
 > - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5".
 
 **Praktikum 4: SharedPreferences**<br>
+
 Langkah 1: Tambahkan Dependensi
 
 Di Terminal, tambahkan package shared_preferences.
@@ -646,3 +647,71 @@ Jalankan aplikasi. Tombol reset sekarang akan berfungsi, menghapus semua pasanga
 >
 > - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 > - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".
+
+**Praktikum 5: Akses filesystem dengan path_provider**<br>
+
+Langkah 1: Tambahkan Dependensi
+
+Tambahkan package path_provider melalui Terminal.
+```
+flutter pub add path_provider
+```
+
+Langkah 2: Lakukan Import
+
+Di file main.dart, tambahkan import untuk path_provider.
+```
+import 'package:path_provider/path_provider.dart';
+```
+
+Langkah 3: Tambahkan Variabel Path State
+
+Di State class Anda, tambahkan variabel untuk menyimpan jalur direktori dokumen dan temporer.
+```
+  String documentsPath = '';
+  String tempPath = '';
+```
+
+Langkah 4: Buat Method getPaths()
+
+Buat method asinkron getPaths() yang menggunakan getApplicationDocumentsDirectory() dan getTemporaryDirectory() untuk mengambil jalur sistem file yang tepat, lalu perbarui state.
+```
+  Future getPaths() async {
+    final docDir = await getApplicationDocumentsDirectory();
+    final tempDir = await getTemporaryDirectory();
+    setState(() {
+      documentsPath = docDir.path;
+      tempPath = tempDir.path;
+    });
+  }
+```
+
+Langkah 5: Panggil getPaths() di initState()
+
+Panggil getPaths() di initState().
+```
+@override
+void initState() {
+  super.initState();
+  getPaths();
+}
+```
+
+Langkah 6: Perbarui Tampilan
+
+Perbarui body Scaffold untuk menampilkan kedua jalur yang telah diambil.
+```
+                Text('Doc Path: $documentsPath'),
+                Text('Temp Path: $tempPath'),
+```
+
+
+Langkah 7: Run
+
+Jalankan aplikasi. Anda akan melihat path absolut ke direktori dokumen dan cache aplikasi di perangkat Anda.
+
+> <br>![Screenshot prak5_01](img/prak5_01.png)<br>
+
+> Soal 7
+> - Capture hasil praktikum Anda dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".
