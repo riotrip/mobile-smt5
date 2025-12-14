@@ -17,6 +17,7 @@ Buatlah sebuah project flutter baru dengan nama store_data_nama (beri nama pangg
 Langkah 2: Buka file main.dart
 
 Ketiklah kode seperti berikut ini.
+
 ```
 import 'package:flutter/material.dart';
 
@@ -56,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > Soal 1
+>
 > - Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan Anda.
 > - Gantilah warna tema aplikasi sesuai kesukaan Anda.
 > - Lakukan commit hasil jawaban Soal 1 dengan pesan "W13: Jawaban Soal 1"
@@ -67,50 +69,53 @@ Buat folder baru assets di root project Anda
 Langkah 4: Buat file baru pizzalist.json
 
 Letakkan file ini di dalam folder assets, lalu salin data JSON berikut ke file tersebut.
+
 ```
-[ 
-    { 
-      "id": 1, 
-      "pizzaName": "Margherita", 
+[
+    {
+      "id": 1,
+      "pizzaName": "Margherita",
       "description": "Pizza with tomato, fresh mozzarella and basil",
-      "price": 8.75, 
-      "imageUrl": "images/margherita.png" 
-    }, 
-    { 
-      "id": 2, 
-      "pizzaName": "Marinara", 
+      "price": 8.75,
+      "imageUrl": "images/margherita.png"
+    },
+    {
+      "id": 2,
+      "pizzaName": "Marinara",
       "description": "Pizza with tomato, garlic and oregano",
-      "price": 7.50, 
-      "imageUrl": "images/marinara.png"  
-    }, 
-    { 
-      "id": 3, 
-      "pizzaName": "Napoli", 
+      "price": 7.50,
+      "imageUrl": "images/marinara.png"
+    },
+    {
+      "id": 3,
+      "pizzaName": "Napoli",
       "description": "Pizza with tomato, garlic and anchovies",
-      "price": 9.50, 
-      "imageUrl": "images/marinara.png"  
-    }, 
-    { 
-      "id": 4, 
-      "pizzaName": "Carciofi", 
+      "price": 9.50,
+      "imageUrl": "images/marinara.png"
+    },
+    {
+      "id": 4,
+      "pizzaName": "Carciofi",
       "description": "Pizza with tomato, fresh mozzarella and artichokes",
-      "price": 8.80, 
-      "imageUrl": "images/marinara.png"  
-    }, 
-    { 
-      "id": 5, 
-      "pizzaName": "Bufala", 
+      "price": 8.80,
+      "imageUrl": "images/marinara.png"
+    },
+    {
+      "id": 5,
+      "pizzaName": "Bufala",
       "description": "Pizza with tomato, buffalo mozzarella and basil",
-      "price": 12.50, 
-      "imageUrl": "images/marinara.png"  
+      "price": 12.50,
+      "imageUrl": "images/marinara.png"
     }
 ]
 ```
+
 Jika Anda ingin menggunakan data JSON yang lain, Anda dapat mengakses salah satu dari daftar API di tautan ini: https://github.com/public-apis/public-apis
 
 Langkah 5: Edit pubspec.yaml
 
 Tambahkan referensi folder assets ke file pubspec.yaml seperti berikut ini.
+
 ```
   assets:
     - assets/
@@ -118,14 +123,16 @@ Tambahkan referensi folder assets ke file pubspec.yaml seperti berikut ini.
 
 Langkah 6: Edit maint.dart
 
-Buatlah variabel seperti berikut ini class _MyHomePageState.
+Buatlah variabel seperti berikut ini class \_MyHomePageState.
+
 ```
   String pizzaString = '';
 ```
 
 Langkah 7: Tetap di main.dart
 
-Untuk membaca isi dari file pizzalist.json di dalam class _MyHomePageState, tambahkan method readJsonFile seperti kode berikut untuk membaca file json.
+Untuk membaca isi dari file pizzalist.json di dalam class \_MyHomePageState, tambahkan method readJsonFile seperti kode berikut untuk membaca file json.
+
 ```
   Future readJsonFile() async {
     String myString = await DefaultAssetBundle.of(
@@ -140,6 +147,7 @@ Untuk membaca isi dari file pizzalist.json di dalam class _MyHomePageState, tamb
 Langkah 8: Panggil method readJsonFile
 
 Panggil method readJsonFile di initState
+
 ```
   @override
   void initState() {
@@ -151,6 +159,7 @@ Panggil method readJsonFile di initState
 Langkah 9: Tampilkan hasil JSON
 
 Kemudian tampilkan hasil JSON di body scaffold.
+
 ```
       body: Text(pizzaString),
 ```
@@ -162,6 +171,7 @@ Jika kode sudah benar, seharusnya tampil seperti gambar berikut ini.
 > <br>![Screenshot prak1_01](img/prak1_01.png)<br>
 
 > Soal 2
+>
 > - Masukkan hasil capture layar ke laporan praktikum Anda.
 > - Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 2"
 
@@ -172,6 +182,7 @@ Kita ingin mengubah data json tersebut dari String menjadi objek List. Maka perl
 Langkah 12: Model pizza.dart
 
 Ketik kode berikut pada file pizza.dart
+
 ```
 class Pizza {
   final int id;
@@ -185,6 +196,7 @@ class Pizza {
 Langkah 13: Buat constructor()
 
 Di dalam class Pizza definisikan constructor fromJson, yang mana akan mengambil data berupa Map sebagai parameter dan mengubah Map ke objek Pizza seperti kode berikut:
+
 ```
   Pizza.fromJson(Map<String, dynamic> json)
       id = json['id'],
@@ -194,9 +206,10 @@ Di dalam class Pizza definisikan constructor fromJson, yang mana akan mengambil 
       imageUrl = json['imageUrl'];
 ```
 
-Langkah 14: Pindah ke class _MyHomePageState
+Langkah 14: Pindah ke class \_MyHomePageState
 
 Tambahkan kode jsonDecode seperti berikut.
+
 ```
   Future readJsonFile() async {
     String myString = await DefaultAssetBundle.of(
@@ -209,15 +222,18 @@ Tambahkan kode jsonDecode seperti berikut.
 Langkah 15: Pastikan impor class
 
 Perhatikan pada bagian atas file bahwa telah berhasil impor kedua file berikut.
+
 ```
 import 'dart:convert';
 import './model/pizza.dart';
 ```
+
 Anda telah berhasil mengimpor pustaka yang diperlukan dan melakukan decoding string JSON menjadi List pizzaMapList pada Langkah ini. Selanjutnya, kita akan mengonversi List Map tersebut menjadi List objek Dart (List<Pizza>).
 
 Langkah 16: Konversi List Map ke List Objek Dart
 
 Di dalam method readJsonFile(), setelah baris List pizzaMapList = jsonDecode(myString);, tambahkan kode berikut untuk mengonversi setiap Map di pizzaMapList menjadi objek Pizza dan menyimpannya ke myPizzas.
+
 ```
     List<Pizza> myPizzas = [];
     for (var pizza in pizzaMapList) {
@@ -229,6 +245,7 @@ Di dalam method readJsonFile(), setelah baris List pizzaMapList = jsonDecode(myS
 Langkah 17: return myPizzas
 
 Hapus atau komentari setState yang menampilkan pizzaString dari Langkah 7. Kemudian, kembalikan myPizzas.
+
 ```
     return myPizzas;
 ```
@@ -236,20 +253,23 @@ Hapus atau komentari setState yang menampilkan pizzaString dari Langkah 7. Kemud
 Langkah 18: Perbarui Signature Method
 
 Perbarui signature method readJsonFile() untuk secara eksplisit menunjukkan bahwa ia mengembalikan Future yang berisi List.
+
 ```
   Future<List<Pizza>> readJsonFile() async {
 ```
 
 Langkah 19: Deklarasikan Variabel State
 
-Di dalam class _MyHomePageState, deklarasikan variabel state baru untuk menampung List objek Pizza.
+Di dalam class \_MyHomePageState, deklarasikan variabel state baru untuk menampung List objek Pizza.
+
 ```
   List<Pizza> myPizzas = [];
 ```
 
 Langkah 20: Panggil di initState dan Perbarui State
 
-Perbarui method initState() di _MyHomePageState untuk memanggil readJsonFile(). Karena readJsonFile() mengembalikan Future, gunakan .then() untuk mendapatkan hasilnya, dan perbarui state myPizzas.
+Perbarui method initState() di \_MyHomePageState untuk memanggil readJsonFile(). Karena readJsonFile() mengembalikan Future, gunakan .then() untuk mendapatkan hasilnya, dan perbarui state myPizzas.
+
 ```
   @override
   void initState() {
@@ -265,6 +285,7 @@ Perbarui method initState() di _MyHomePageState untuk memanggil readJsonFile(). 
 Langkah 21: Tampilkan Data di ListView
 
 Perbarui body dari Scaffold untuk menggunakan ListView.builder yang menampilkan pizzaName sebagai judul dan description sebagai subjudul dari setiap objek Pizza.
+
 ```
 body: ListView.builder(
   itemCount: myPizzas.length,
@@ -285,12 +306,14 @@ Jalankan aplikasi. Sekarang, Anda akan melihat data pizza ditampilkan dalam daft
 > <br>![Screenshot prak1_02](img/prak1_02.png)<br>
 
 > Soal 3
+>
 > - Masukkan hasil capture layar ke laporan praktikum Anda.
 > - Lakukan commit hasil jawaban Soal 2 dengan pesan "W13: Jawaban Soal 3"
 
 Langkah 23: Tambahkan Method toJson() (Serialization)
 
 Di file pizza.dart, tambahkan method toJson() ke class Pizza. Method ini berfungsi untuk mengonversi objek Dart kembali menjadi Map (langkah pertama menuju JSON String).
+
 ```
   Map<String, dynamic> toJson() {
     return {
@@ -305,7 +328,8 @@ Di file pizza.dart, tambahkan method toJson() ke class Pizza. Method ini berfung
 
 Langkah 24: Buat Fungsi Konversi JSON String
 
-Di main.dart, tambahkan fungsi convertToJSON di dalam _MyHomePageState untuk menggunakan jsonEncode (dari dart:convert) yang mengubah List objek Dart menjadi JSON String.
+Di main.dart, tambahkan fungsi convertToJSON di dalam \_MyHomePageState untuk menggunakan jsonEncode (dari dart:convert) yang mengubah List objek Dart menjadi JSON String.
+
 ```
   String convertToJSON(List<Pizza> pizzas) {
     return jsonEncode(pizzas.map((pizza) => jsonEncode(pizza)).toList());
@@ -315,6 +339,7 @@ Di main.dart, tambahkan fungsi convertToJSON di dalam _MyHomePageState untuk men
 Langkah 25: Tampilkan Output JSON di Konsol
 
 Di method readJsonFile(), tambahkan kode untuk memanggil convertToJSON dan mencetak hasilnya ke Debug Console sebelum mengembalikan myPizzas.
+
 ```
 String json = convertToJSON(myPizzas);
 print(json);
@@ -340,6 +365,7 @@ Jika ID pizza di JSON dikirim sebagai String (misalnya "id": "1" di JSON) sement
 Langkah 3: Terapkan tryParse dan Null Coalescing pada ID
 
 Di Pizza.fromJson (file pizza.dart), ganti cara mendapatkan nilai id menggunakan int.tryParse dan null coalescing operator (??) untuk memberikan nilai default 0 jika parsing gagal atau nilainya null. Tujuannya adalah memastikan nilai id selalu integer.
+
 ```
     : id = int.parse(json['id'].toString()) ?? 0,
 ```
@@ -355,6 +381,7 @@ Tambahkan null coalescing operator (??) pada imageUrl untuk memberikan string ko
 Langkah 6: Gunakan toString() untuk Field String
 
 Untuk memastikan semua nilai yang digunakan sebagai String benar-benar String (bahkan jika mereka mungkin dikirim sebagai int atau tipe lain), gunakan toString().
+
 ```
   Pizza.fromJson(Map<String, dynamic> json)
     : id = json['id'],
@@ -371,6 +398,7 @@ Jika Anda menjalankan ulang, Anda mungkin menemukan error saat mengonversi Strin
 Langkah 8: Terapkan double.tryParse
 
 Terapkan double.tryParse dengan null coalescing (?? 0) untuk bidang price, sama seperti yang Anda lakukan pada id.
+
 ```
   Pizza.fromJson(Map<String, dynamic> json)
     : id = int.tryParse(json['id'].toString()) ?? 0,
@@ -389,6 +417,7 @@ Setelah mengimplementasikan semua perbaikan tipe data, aplikasi akan berjalan, t
 Langkah 10: Tambahkan Operator Ternary untuk Output User-Friendly
 
 Perbaiki masalah tampilan "null" dengan menambahkan operator ternary yang memeriksa apakah nilai null sebelum mengubahnya menjadi String. Jika null, berikan nilai pengganti yang ramah pengguna seperti 'No name' atau string kosong ('').
+
 ```
   Pizza.fromJson(Map<String, dynamic> json)
     : id = int.tryParse(json['id'].toString()) ?? 0,
@@ -409,6 +438,7 @@ Jalankan aplikasi. Sekarang data yang tidak konsisten telah ditangani dengan bai
 > <br>![Screenshot prak2_02](img/prak2_02.png)<br>
 
 > Soal 4
+>
 > - Capture hasil running aplikasi Anda, kemudian impor ke laporan praktikum Anda!
 > - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 4".
 
@@ -417,6 +447,7 @@ Jalankan aplikasi. Sekarang data yang tidak konsisten telah ditangani dengan bai
 Langkah 1: Buka pizza.dart dan Buat Konstanta
 
 Di bagian atas file pizza.dart, di luar class Pizza, deklarasikan konstanta untuk setiap kunci JSON.
+
 ```
 const keyId = 'id';
 const keyPizzaName = 'pizzaName';
@@ -428,6 +459,7 @@ const keyImageUrl = 'imageUrl';
 Langkah 2: Perbarui fromJson() menggunakan Konstanta
 
 Di constructor Pizza.fromJson, ganti semua string literal kunci JSON (misalnya 'id') dengan konstanta yang sesuai (keyId).
+
 ```
   Pizza.fromJson(Map<String, dynamic> json)
     : id = int.tryParse(json[keyId].toString()) ?? 0,
@@ -446,6 +478,7 @@ Catatan: Konstruktor ini menggunakan sintaks inisialisasi, tetapi untuk kesederh
 Langkah 3: Perbarui toJson() menggunakan Konstanta
 
 Perbarui juga method toJson() agar menggunakan konstanta yang sama.
+
 ```
   Map<String, dynamic> toJson() {
     return {
@@ -465,6 +498,151 @@ Jalankan aplikasi. Tidak akan ada perubahan visual, tetapi kode Anda kini lebih 
 > <br>![Screenshot prak3_01](img/prak3_01.png)<br>
 
 > Soal 5
+>
 > - Jelaskan maksud kode lebih safe dan maintainable!
 > - Capture hasil praktikum Anda dan lampirkan di README.
 > - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5".
+
+**Praktikum 4: SharedPreferences**<br>
+Langkah 1: Tambahkan Dependensi
+
+Di Terminal, tambahkan package shared_preferences.
+
+```
+flutter pub add shared_preferences
+```
+
+Langkah 2: Install Dependensi
+
+Jalankan flutter pub get jika editor Anda tidak melakukannya secara otomatis.
+
+Langkah 3: Lakukan Import
+
+Di file main.dart, tambahkan import untuk shared_preferences.
+
+```
+import 'package:shared_preferences/shared_preferences.dart';
+```
+
+Langkah 4: Tambahkan Variabel appCounter
+
+Di dalam class \_MyHomePageState (atau State class yang Anda gunakan), deklarasikan variabel appCounter.
+
+```
+  int appCounter = 0;
+```
+
+Langkah 5: Buat Method readAndWritePreference
+
+Buat method asinkron readAndWritePreference().
+
+```
+  Future addAndWritePreference() async {}
+```
+
+Langkah 6: Dapatkan Instance SharedPreferences
+
+Di dalam method tersebut, dapatkan instance SharedPreferences. Perlu diingat bahwa ini adalah operasi asinkron, jadi gunakan await.
+
+```
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+```
+
+Langkah 7: Baca, Cek Null, dan Increment Counter
+
+Baca nilai appCounter dari storage. Gunakan null coalescing (?? 0) untuk memastikan nilai default 0 jika data belum ada. Kemudian increment nilai tersebut.
+
+```
+    appCounter = prefs.getInt('appCounter') ?? 0;
+    appCounter++;
+```
+
+Langkah 8: Simpan Nilai Baru
+
+Simpan nilai appCounter yang sudah di-increment kembali ke storage menggunakan prefs.setInt().
+
+```
+    await prefs.setInt('appCounter', appCounter);
+```
+
+Langkah 9: Perbarui State
+
+Panggil setState() untuk memperbarui UI dengan nilai baru appCounter.
+
+```
+    setState(() {
+      appCounter = appCounter;
+    });
+```
+
+Langkah 10: Panggil di initState()
+
+Panggil readAndWritePreference() di initState() agar penghitung dibaca saat aplikasi pertama kali dibuka.
+
+```
+  @override
+  void initState() {
+    super.initState();
+    readAndWritePreference();
+  }
+```
+
+Langkah 11: Perbarui Tampilan (body)
+
+Ganti body Scaffold Anda dengan tata letak yang menampilkan hitungan dan tombol 'Reset counter'.
+
+```
+child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('You have opened the app $appCounter times'),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Reset counter'),
+                ),
+              ],
+            ),
+          ),
+```
+
+Langkah 12: Run
+
+Aplikasi sekarang akan menampilkan "You have opened the app 1 times" (jika ini pembukaan pertama).
+
+> <br>![Screenshot prak4_01](img/prak4_01.png)<br>
+
+Langkah 13: Buat Method deletePreference()
+
+Tambahkan method asinkron deletePreference() yang berfungsi untuk menghapus data menggunakan prefs.clear().
+
+```
+  Future deletePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    setState(() {
+      appCounter = 0;
+    });
+  }
+```
+
+Langkah 14: Panggil deletePreference()
+
+Hubungkan deletePreference() ke tombol 'Reset counter'.
+
+```
+                  onPressed: () {
+                    deletePreference();
+                  },
+```
+
+Langkah 15: Run
+
+Jalankan aplikasi. Tombol reset sekarang akan berfungsi, menghapus semua pasangan kunci-nilai dan mereset hitungan.
+
+> <br>![Screenshot prak4_02](img/prak4_02.png)<br>
+
+> Soal 6
+>
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".
