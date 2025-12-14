@@ -411,3 +411,60 @@ Jalankan aplikasi. Sekarang data yang tidak konsisten telah ditangani dengan bai
 > Soal 4
 > - Capture hasil running aplikasi Anda, kemudian impor ke laporan praktikum Anda!
 > - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 4".
+
+**Praktikum 3: Menangani error JSON**<br>
+
+Langkah 1: Buka pizza.dart dan Buat Konstanta
+
+Di bagian atas file pizza.dart, di luar class Pizza, deklarasikan konstanta untuk setiap kunci JSON.
+```
+const keyId = 'id';
+const keyPizzaName = 'pizzaName';
+const keyDescription = 'description';
+const keyPrice = 'price';
+const keyImageUrl = 'imageUrl';
+```
+
+Langkah 2: Perbarui fromJson() menggunakan Konstanta
+
+Di constructor Pizza.fromJson, ganti semua string literal kunci JSON (misalnya 'id') dengan konstanta yang sesuai (keyId).
+```
+  Pizza.fromJson(Map<String, dynamic> json)
+    : id = int.tryParse(json[keyId].toString()) ?? 0,
+      pizzaName = json[keyPizzaName] != null
+          ? json[keyPizzaName].toString()
+          : 'No name',
+      description = json[keyDescription] != null
+          ? json[keyDescription].toString()
+          : '',
+      price = double.tryParse(json[keyPrice].toString()) ?? 0,
+      imageUrl = json[keyImageUrl] ?? '';
+```
+
+Catatan: Konstruktor ini menggunakan sintaks inisialisasi, tetapi untuk kesederhanaan, kita menggunakan sintaks body.
+
+Langkah 3: Perbarui toJson() menggunakan Konstanta
+
+Perbarui juga method toJson() agar menggunakan konstanta yang sama.
+```
+  Map<String, dynamic> toJson() {
+    return {
+      keyId: id,
+      keyPizzaName: pizzaName,
+      keyDescription: description,
+      keyPrice: price,
+      keyImageUrl: imageUrl,
+    };
+  }
+```
+
+Langkah 4: Run
+
+Jalankan aplikasi. Tidak akan ada perubahan visual, tetapi kode Anda kini lebih safe dan maintainable.
+
+> <br>![Screenshot prak3_01](img/prak3_01.png)<br>
+
+> Soal 5
+> - Jelaskan maksud kode lebih safe dan maintainable!
+> - Capture hasil praktikum Anda dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5".

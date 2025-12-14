@@ -1,3 +1,11 @@
+import 'package:flutter/cupertino.dart';
+
+const keyId = 'id';
+const keyPizzaName = 'pizzaName';
+const keyDescription = 'description';
+const keyPrice = 'price';
+const keyImageUrl = 'imageUrl';
+
 class Pizza {
   final int id;
   final String pizzaName;
@@ -7,23 +15,23 @@ class Pizza {
 
   Pizza.fromJson(Map<String, dynamic> json)
     // : id = json['id'],
-    : id = int.tryParse(json['id'].toString()) ?? 0,
-      pizzaName = json['pizzaName'] != null
-          ? json['pizzaName'].toString()
+    : id = int.tryParse(json[keyId].toString()) ?? 0,
+      pizzaName = json[keyPizzaName] != null
+          ? json[keyPizzaName].toString()
           : 'No name',
-      description = json['description'] != null
-          ? json['description'].toString()
+      description = json[keyDescription] != null
+          ? json[keyDescription].toString()
           : '',
-      price = double.tryParse(json['price'].toString()) ?? 0,
-      imageUrl = json['imageUrl'] ?? '';
+      price = double.tryParse(json[keyPrice].toString()) ?? 0,
+      imageUrl = json[keyImageUrl] ?? '';
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'pizzaName': pizzaName,
-      'description': description,
-      'price': price,
-      'imageUrl': imageUrl,
+      keyId: id,
+      keyPizzaName: pizzaName,
+      keyDescription: description,
+      keyPrice: price,
+      keyImageUrl: imageUrl,
     };
   }
 }
