@@ -4,6 +4,7 @@ import './model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +39,45 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String documentsPath = '';
   String tempPath = '';
+
+  dynamic myFile;
+  String fileText = '';
+
+  Future<bool> writeFile() async {
+    if (kIsWeb) {
+      // On web, we can use SharedPreferences or local storage
+      setState(() {
+        fileText =
+            'File operations not available on web. Use SharedPreferences instead.';
+      });
+      return true;
+    }
+    try {
+      await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> readFile() async {
+    if (kIsWeb) {
+      setState(() {
+        fileText =
+            'File operations not available on web. Use SharedPreferences instead.';
+      });
+      return true;
+    }
+    try {
+      String contents = await myFile.readAsString();
+      setState(() {
+        fileText = contents;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
   Future getPaths() async {
     if (kIsWeb) {
@@ -102,7 +142,13 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
     readAndWritePreference();
-    getPaths();
+    // getPaths();
+    getPaths().then((_) {
+      if (!kIsWeb) {
+        myFile = File('$documentsPath/pizzas.txt');
+        writeFile();
+      }
+    });
   }
 
   @override
@@ -131,6 +177,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Text('Doc Path: $documentsPath'),
           Text('Temp Path: $tempPath'),
+          ElevatedButton(
+            child: const Text('Read File'),
+            onPressed: () {
+              readFile();
+            },
+          ),
+          Text(fileText),
         ],
       ),
     );

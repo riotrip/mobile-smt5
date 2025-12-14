@@ -715,3 +715,87 @@ Jalankan aplikasi. Anda akan melihat path absolut ke direktori dokumen dan cache
 > Soal 7
 > - Capture hasil praktikum Anda dan lampirkan di README.
 > - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".
+
+**Praktikum 6: Akses filesystem dengan direktori**<br>
+
+Langkah 1: Lakukan Import dart:io
+
+Di file main.dart, tambahkan import untuk pustaka dart:io.
+```
+import 'dart:io';
+```
+
+Langkah 2: Tambahkan Variabel File dan Text
+
+Di State class, tambahkan variabel myFile (dengan modifier late) dan fileText untuk menyimpan konten yang akan dibaca.
+```
+  late File myFile;
+  String fileText = '';
+```
+
+Langkah 3: Buat Method writeFile()
+
+Buat method asinkron writeFile() yang menggunakan myFile.writeAsString() untuk menulis konten ke file. Kata ‘Margherita, Capricciosa, Napoli' silakan Anda ganti dengan Nama Lengkap dan NIM Anda.
+```
+Future<bool> writeFile() async {
+  try {
+    await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+```
+
+Langkah 4: Inisialisasi File dan Panggil writeFile() di initState()
+
+Perbarui initState(): setelah getPaths() selesai, inisialisasi myFile dengan jalur lengkap di direktori dokumen, dan panggil writeFile().
+```
+  @override
+  void initState() {
+    super.initState();
+    getPaths().then((_) {
+        myFile = File('$documentsPath/pizzas.txt');
+        writeFile();
+    });
+  }
+```
+
+Langkah 5: Buat Method readFile()
+
+Buat method asinkron readFile() yang menggunakan myFile.readAsString() untuk membaca konten file dan memperbarui fileText melalui setState().
+```
+  Future<bool> readFile() async {
+    try {
+      String contents = await myFile.readAsString();
+      setState(() {
+        fileText = contents;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+```
+
+Langkah 6: Edit build() dan Tambahkan Tombol Baca
+
+Di method build(), tambahkan ElevatedButton yang memanggil readFile() dan Text yang menampilkan fileText di bawahnya.
+```
+          ElevatedButton(
+            child: const Text('Read File'),
+            onPressed: () => readFile(),
+          ),
+          Text(fileText),
+```
+
+Langkah 7: Run
+
+Jalankan aplikasi. Setelah menekan tombol 'Read File', konten yang ditulis (Margherita, Capricciosa, Napoli) akan ditampilkan atau sesuai nama dan NIM Anda.
+
+> <br>![Screenshot prak6_01](img/prak6_01.png)<br>
+
+> Soal 8
+> - Jelaskan maksud kode pada langkah 3 dan 7 !
+> - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+> - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 8".
