@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<Pizza>> readJsonFile() async {
     String myString = await DefaultAssetBundle.of(
       context,
-    ).loadString('assets/pizzalist.json');
+    ).loadString('assets/pizzalist_broken.json');
     // setState(() {
     //   pizzaString = myString;
     // });
