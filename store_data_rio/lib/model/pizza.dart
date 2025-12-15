@@ -12,7 +12,6 @@ class Pizza {
   final String imageUrl;
 
   Pizza.fromJson(Map<String, dynamic> json)
-    // : id = json['id'],
     : id = int.tryParse(json[keyId].toString()) ?? 0,
       pizzaName = json[keyPizzaName] != null
           ? json[keyPizzaName].toString()
