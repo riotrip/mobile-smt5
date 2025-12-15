@@ -32,3 +32,10 @@ Soal 2
 Soal 3
 - Ubah salah satu data dengan Nama dan NIM Anda, lalu perhatikan hasilnya di Wiremock.
 - Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 3 dengan pesan "W14: Jawaban Soal 3"
+
+**Praktikum 4: Menghapus Data dari Web Service (DELETE)**<br>
+
+> <br>![Screenshot prak4_01](img/prak4_01.png)<br>
+
+Soal 4
+- Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 4 dengan pesan "W14: Jawaban Soal 4"
