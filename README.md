@@ -24,3 +24,11 @@ Soal 1
 Soal 2
 - Tambahkan field baru dalam JSON maupun POST ke Wiremock!
 - Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 2 dengan pesan "W14: Jawaban Soal 2"
+
+**Praktikum 3: Memperbarui Data di Web Service (PUT)**<br>
+
+> <br>![Screenshot prak3_01](img/prak3_01.png)<br>
+
+Soal 3
+- Ubah salah satu data dengan Nama dan NIM Anda, lalu perhatikan hasilnya di Wiremock.
+- Capture hasil aplikasi Anda berupa GIF di README dan lakukan commit hasil jawaban Soal 3 dengan pesan "W14: Jawaban Soal 3"
