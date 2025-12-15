@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './model/pizza.dart';
 import './httphelper.dart';
+import './pizza_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,11 +28,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-Future<List<Pizza>> callPizzas() async {
+  Future<List<Pizza>> callPizzas() async {
     HttpHelper helper = HttpHelper();
     List<Pizza> pizzas = await helper.getPizzaList();
     return pizzas;
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +59,15 @@ Future<List<Pizza>> callPizzas() async {
                 ),
               );
             },
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PizzaDetailScreen()),
           );
         },
       ),
