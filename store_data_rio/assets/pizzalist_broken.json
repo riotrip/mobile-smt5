@@ -1,0 +1,16 @@
+[ 
+    { 
+      "id": "1", 
+      "pizzaName": "Margherita", 
+      "description": "Pizza with tomato, fresh mozzarella and basil",
+      "price": 8.75, 
+      "imageUrl": "" 
+    },
+        { 
+      "id": "2", 
+      "pizzaName": null, 
+      "description": null,
+      "price": null, 
+      "imageUrl": null 
+    }
+]
